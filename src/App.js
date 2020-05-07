@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MainTemplate from './template/MainTemplate';
+import GameView from './views/GameView';
+import GameLostView from './views/GameLostView';
 
-function App() {
+const App = () => {
+  const [gameLost, setGameLost] = useState(true);
+
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <MainTemplate>
+      {gameLost && <GameLostView />}
+      <GameView />
+    </MainTemplate>
   );
-}
+};
 
 export default App;
