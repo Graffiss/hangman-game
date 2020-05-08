@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   height: 100vh;
   position: absolute;
   z-index: 999;
-  background: rgba(94, 94, 94, 0.5);
+  background: rgba(31, 40, 84, 0.68);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,14 +14,16 @@ const Wrapper = styled.div`
 `;
 
 const RestartButton = styled.button`
-  border: 5px dashed #f9b505;
-  color: #f9b505;
+  border: 3px dashed #ffb900;
+  color: #ffb900;
   font-size: 24px;
-  border-radius: 20px;
+  font-family: 'Aller Display';
+  border-radius: 30px;
   padding: 20px 50px;
   background-color: transparent;
   cursor: pointer;
   text-transform: uppercase;
+  outline: none;
 `;
 
 const StyledParagraph = styled.p`

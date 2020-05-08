@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   height: 80vh;
   width: 80vw;
   background-color: #f5f5f5;
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: 10px 10px 22px -13px rgba(0, 0, 0, 0.75);
   position: relative;
   overflow: hidden;

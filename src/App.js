@@ -4,7 +4,7 @@ import GameView from './views/GameView';
 import GameLostView from './views/GameLostView';
 
 const App = () => {
-  const [gameLost, setGameLost] = useState(true);
+  const [gameLost, setGameLost] = useState(false);
 
   return (
     <MainTemplate>
