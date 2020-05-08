@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Hangman from '../components/organisms/Hangman/Hangman';
 import { randomWord } from '../components/organisms/Words/Words';
@@ -59,23 +59,31 @@ const StyledLettersGuessed = styled.button`
     `}
 `;
 
-const GameTemplate = () => (
-  <Wrapper>
-    <StyledResult>
-      <Hangman />
-      <StyledResultMissed>
-        <StyledParagraph>You missed:</StyledParagraph>
-        <StyledMissedLetters>A C D E</StyledMissedLetters>
-      </StyledResultMissed>
-    </StyledResult>
-    <StyledAnswer>
-      {[...randomWord()].map((letter) => {
-        return (
-          <StyledLettersGuessed key={Math.random() * letter.length}>{letter}</StyledLettersGuessed>
-        );
-      })}
-    </StyledAnswer>
-  </Wrapper>
-);
+const GameTemplate = () => {
+  const [letterGuessed, letterWordGuessed] = useState([]);
+
+  return (
+    <Wrapper>
+      <StyledResult>
+        <Hangman />
+        <StyledResultMissed>
+          <StyledParagraph>You missed:</StyledParagraph>
+          <StyledMissedLetters>A C D E</StyledMissedLetters>
+        </StyledResultMissed>
+      </StyledResult>
+      <StyledAnswer>
+        {[...randomWord()].map((letter) =>
+          letterGuessed.includes(letter) ? (
+            <StyledLettersGuessed key={Math.random() * letter.length}>
+              {letter}
+            </StyledLettersGuessed>
+          ) : (
+            <StyledLettersGuessed key={Math.random() * letter.length} />
+          ),
+        )}
+      </StyledAnswer>
+    </Wrapper>
+  );
+};
 
 export default GameTemplate;

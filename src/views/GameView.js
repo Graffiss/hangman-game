@@ -31,8 +31,4 @@ const GameView = ({ children }) => (
   </Wrapper>
 );
 
-GameView.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default GameView;
