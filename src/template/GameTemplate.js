@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Hangman from '../components/organisms/Hangman/Hangman';
+import { randomWord } from '../components/organisms/Words/Words';
 
 const Wrapper = styled.div`
   margin: 50px 0;
@@ -68,9 +69,11 @@ const GameTemplate = () => (
       </StyledResultMissed>
     </StyledResult>
     <StyledAnswer>
-      <StyledLettersGuessed empty />
-      <StyledLettersGuessed>G</StyledLettersGuessed>
-      <StyledLettersGuessed>F</StyledLettersGuessed>
+      {[...randomWord()].map((letter) => {
+        return (
+          <StyledLettersGuessed key={Math.random() * letter.length}>{letter}</StyledLettersGuessed>
+        );
+      })}
     </StyledAnswer>
   </Wrapper>
 );

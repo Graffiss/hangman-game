@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Bar from '../../atoms/Bar/Bar';
 import Head from '../../atoms/Head/Head';
@@ -10,13 +10,18 @@ const StyledHangman = styled.div`
   flex: 1;
 `;
 
-const Hangman = () => (
-  <StyledHangman>
-    <Bar />
-    <Neck />
-    <Head />
-    <Corpus />
-  </StyledHangman>
-);
+const Hangman = () => {
+  const [wrongAnswer, setWrongAnswer] = useState(0);
+  const [guessedLetters, setGuessedLetters] = useState([]);
+
+  return (
+    <StyledHangman>
+      <Bar />
+      <Neck />
+      <Head />
+      <Corpus />
+    </StyledHangman>
+  );
+};
 
 export default Hangman;
