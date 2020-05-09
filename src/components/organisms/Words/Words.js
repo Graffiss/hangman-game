@@ -9,8 +9,6 @@ const wordsFromApi = [
   'leicester',
 ];
 
-const randomWord = () => {
-  return wordsFromApi[Math.floor(Math.random() * wordsFromApi.length)];
-};
+const randomWord = () => wordsFromApi[Math.floor(Math.random() * wordsFromApi.length)];
 
 export { randomWord };

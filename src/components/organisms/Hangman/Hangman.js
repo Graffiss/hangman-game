@@ -29,7 +29,6 @@ const Hangman = () => {
       >
         Wrong answer
       </button>
-      {console.log(wrongAnswer)}
     </>
   );
 };
