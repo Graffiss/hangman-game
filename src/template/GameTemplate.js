@@ -61,15 +61,13 @@ const StyledLettersGuessed = styled.button`
 
 const GameTemplate = () => {
   const [letterGuessed, setLetterGuessed] = useState([]);
-
-  const wordToGuess = randomWord();
+  const [gameLost, setGameLost] = useState(false);
+  const [wordToGuess, setWordToGuess] = useState(randomWord());
 
   const keyPressed = (e) => {
     e.preventDefault();
     const key = e.key.toLowerCase();
     setLetterGuessed([...letterGuessed, key]);
-
-    console.log(letterGuessed);
   };
 
   return (

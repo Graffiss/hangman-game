@@ -15,7 +15,9 @@ const Hangman = () => {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const hangman = [<Bar />, <Head />, <Neck />, <Corpus />];
 
-  useEffect(() => {});
+  useEffect(() => {
+    console.log(wrongAnswer);
+  });
 
   return (
     <>
@@ -24,7 +26,7 @@ const Hangman = () => {
         style={{ width: 150, height: 60 }}
         type="button"
         onClick={() => {
-          setWrongAnswer([...wrongAnswer, 1]);
+          setWrongAnswer([...wrongAnswer, wrongAnswer.length - 1 + 1]);
         }}
       >
         Wrong answer
