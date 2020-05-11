@@ -23,11 +23,16 @@ const StyledTriangle = styled.div`
   right: 0px;
 `;
 
-const GameView = ({ children }) => (
+const GameView = ({ children, letterGuessed, lettersMissed, wrongAnswer, wordToGuess }) => (
   <Wrapper>
     {children}
     <StyledTriangle />
-    <GameTemplate />
+    <GameTemplate
+      letterGuessed={letterGuessed}
+      lettersMissed={lettersMissed}
+      wrongAnswer={wrongAnswer}
+      wordToGuess={wordToGuess}
+    />
   </Wrapper>
 );
 

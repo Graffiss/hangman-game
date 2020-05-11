@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import Hangman from '../components/organisms/Hangman/Hangman';
-import { randomWord } from '../components/organisms/Words/Words';
 
 const Wrapper = styled.div`
   margin: 50px 0;
@@ -37,6 +36,8 @@ const StyledMissedLetters = styled.p`
   color: #5174fa;
   font-size: 64px;
   text-transform: uppercase;
+  display: inline-block;
+  margin-right: 20px;
 `;
 
 const StyledLettersGuessed = styled.button`
@@ -59,26 +60,16 @@ const StyledLettersGuessed = styled.button`
     `}
 `;
 
-const GameTemplate = () => {
-  const [letterGuessed, setLetterGuessed] = useState([]);
-  const [gameLost, setGameLost] = useState(false);
-  const [wordToGuess, setWordToGuess] = useState(randomWord());
-
-  const keyPressed = (e) => {
-    e.preventDefault();
-    const key = e.key.toLowerCase();
-    setLetterGuessed([...letterGuessed, key]);
-  };
-
+const GameTemplate = ({ wrongAnswer, lettersMissed, letterGuessed, wordToGuess }) => {
   return (
-    <Wrapper onKeyDown={keyPressed} tabIndex="0">
+    <Wrapper>
       <StyledResult>
-        <Hangman />
+        <Hangman wrongAnswer={wrongAnswer} />
         <StyledResultMissed>
           <StyledParagraph>You missed:</StyledParagraph>
-          <StyledMissedLetters>
-            {letterGuessed.map((item) => !wordToGuess.includes(item) && item)}
-          </StyledMissedLetters>
+          {lettersMissed.map((item) => (
+            <StyledMissedLetters>{item}</StyledMissedLetters>
+          ))}
         </StyledResultMissed>
       </StyledResult>
       <StyledAnswer>
