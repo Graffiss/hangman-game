@@ -19,14 +19,20 @@ const App = () => {
       : setLetterMissed([...lettersMissed, key]);
   };
 
-  useEffect(() => setWrongAnswer([...wrongAnswer, lettersMissed.length - 1 + 1]), []);
+  useEffect(() => setWrongAnswer([...wrongAnswer, lettersMissed.length - 1 + 1]), [lettersMissed]);
 
+  console.log(lettersMissed);
   console.log(wrongAnswer);
+
+  const handleRestart = () => {
+    setWordToGuess(randomWord());
+    setGameLost(false);
+  };
 
   return (
     <div onKeyDown={keyPressed} tabIndex="0">
       <MainTemplate>
-        {gameLost && <GameLostView />}
+        {gameLost && <GameLostView handleRestart={handleRestart} />}
         <GameView
           letterGuessed={letterGuessed}
           lettersMissed={lettersMissed}
