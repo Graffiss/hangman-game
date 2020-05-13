@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import MainTemplate from './template/MainTemplate';
 import GameView from './views/GameView';
 import GameLostView from './views/GameLostView';
 import { randomWord } from './components/organisms/Words/Words';
 
 const App = () => {
-  const [gameLost, setGameLost] = useState(false);
+  const onFocus = useRef(null);
   const [letterGuessed, setLetterGuessed] = useState([]);
   const [lettersMissed, setLetterMissed] = useState([]);
   const [wrongAnswer, setWrongAnswer] = useState([]);
@@ -13,34 +13,46 @@ const App = () => {
 
   const keyPressed = (e) => {
     e.preventDefault();
+    const charList = 'abcdefghijklmnopqrstuvwxyz';
     const key = e.key.toLowerCase();
-    wordToGuess.includes(key)
-      ? setLetterGuessed([...letterGuessed, key])
-      : setLetterMissed([...lettersMissed, key]);
+    if (charList.indexOf(key) !== -1) {
+      wordToGuess.includes(key)
+        ? setLetterGuessed([...letterGuessed, key])
+        : setLetterMissed([...lettersMissed, key]);
+    }
   };
 
-  useEffect(() => setWrongAnswer([...wrongAnswer, lettersMissed.length - 1 + 1]), [lettersMissed]);
+  useEffect(() => {
+    setWrongAnswer([...wrongAnswer, lettersMissed.length - 1 + 1]);
+    onFocus.current.focus();
+  }, [lettersMissed]);
 
   console.log(lettersMissed);
   console.log(wrongAnswer);
 
   const handleRestart = () => {
     setWordToGuess(randomWord());
-    setGameLost(false);
+    setLetterGuessed([]);
+    setLetterMissed([]);
+    setWrongAnswer([]);
   };
 
+  const gameLost = lettersMissed.length >= 11;
+
   return (
-    <div onKeyDown={keyPressed} tabIndex="0">
+    <>
+      {gameLost && <GameLostView handleRestart={handleRestart} />}
       <MainTemplate>
-        {gameLost && <GameLostView handleRestart={handleRestart} />}
-        <GameView
-          letterGuessed={letterGuessed}
-          lettersMissed={lettersMissed}
-          wrongAnswer={wrongAnswer}
-          wordToGuess={wordToGuess}
-        />
+        <div style={{ outline: 'none' }} onKeyDown={keyPressed} tabIndex="0" ref={onFocus}>
+          <GameView
+            letterGuessed={letterGuessed}
+            lettersMissed={lettersMissed}
+            wrongAnswer={wrongAnswer}
+            wordToGuess={wordToGuess}
+          />
+        </div>
       </MainTemplate>
-    </div>
+    </>
   );
 };
 
