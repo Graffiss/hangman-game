@@ -4,9 +4,9 @@ import leftFootImage from '../../../assets/images/bodyParts/left-foot.png';
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 500px;
-  left: 169px;
-  width: 65px;
+  top: 410px;
+  left: 188px;
+  width: 52px;
 `;
 
 const LeftFoot = () => <StyledImage src={leftFootImage} alt="neck" />;

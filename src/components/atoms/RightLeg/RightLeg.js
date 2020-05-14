@@ -4,9 +4,10 @@ import rightLegImage from '../../../assets/images/bodyParts/right-leg.png';
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 375px;
-  left: 281px;
-  width: 65px;
+  top: 310px;
+  left: 279px;
+  width: 52px;
+  z-index: 1;
 `;
 
 const RightLeg = () => <StyledImage src={rightLegImage} alt="neck" />;

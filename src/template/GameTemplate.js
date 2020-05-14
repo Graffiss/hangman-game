@@ -24,6 +24,7 @@ const StyledAnswer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const StyledParagraph = styled.p`

@@ -4,9 +4,9 @@ import neckImage from '../../../assets/images/bodyParts/neck.png';
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 200px;
-  left: 255px;
-  width: 30px;
+  top: 170px;
+  left: 257px;
+  width: 24px;
 `;
 
 const Neck = () => <StyledImage src={neckImage} alt="neck" />;

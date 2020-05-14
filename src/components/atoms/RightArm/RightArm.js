@@ -4,9 +4,10 @@ import rightArmImage from '../../../assets/images/bodyParts/right-arm.png';
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 232px;
-  left: 286px;
-  width: 100px;
+  top: 200px;
+  left: 287px;
+  width: 80px;
+  z-index: 1;
 `;
 
 const RightArm = () => <StyledImage src={rightArmImage} alt="neck" />;

@@ -27,9 +27,6 @@ const App = () => {
     onFocus.current.focus();
   }, [lettersMissed]);
 
-  console.log(lettersMissed);
-  console.log(wrongAnswer);
-
   const handleRestart = () => {
     setWordToGuess(randomWord());
     setLetterGuessed([]);

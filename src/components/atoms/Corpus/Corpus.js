@@ -4,9 +4,10 @@ import corpusImage from '../../../assets/images/bodyParts/corpus.png';
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 230px;
-  left: 220px;
-  width: 100px;
+  top: 195px;
+  left: 230px;
+  width: 80px;
+  z-index: 1;
 `;
 
 const Corpus = () => <StyledImage src={corpusImage} alt="corpus" />;

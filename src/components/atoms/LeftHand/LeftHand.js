@@ -4,9 +4,9 @@ import leftHandImage from '../../../assets/images/bodyParts/left-hand.png';
 
 const StyledImage = styled.img`
   position: absolute;
-  top: 306px;
-  left: 144px;
-  width: 30px;
+  top: 260px;
+  left: 165px;
+  width: 24px;
 `;
 
 const LeftHand = () => <StyledImage src={leftHandImage} alt="neck" />;

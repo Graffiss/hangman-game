@@ -1,13 +1,4 @@
-const wordsFromApi = [
-  'football',
-  'soccer',
-  'chelsea',
-  'manchester',
-  'liverpool',
-  'everton',
-  'arsenal',
-  'leicester',
-];
+const wordsFromApi = ['chelsea', 'manchester united', 'manchester city', 'arsenal londyn'];
 
 const randomWord = () => wordsFromApi[Math.floor(Math.random() * wordsFromApi.length)];
 
