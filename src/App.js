@@ -3,6 +3,7 @@ import MainTemplate from './template/MainTemplate';
 import GameView from './views/GameView';
 import GameLostView from './views/GameLostView';
 import { randomWord } from './components/organisms/Words/Words';
+import { fetchData } from './components/organisms/Words/api';
 
 const App = () => {
   const onFocus = useRef(null);
