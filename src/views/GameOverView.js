@@ -32,11 +32,11 @@ const StyledParagraph = styled.p`
   color: white;
 `;
 
-const GameLostView = ({ handleRestart }) => (
+const GameOverView = ({ handleRestart, gameWon }) => (
   <Wrapper>
-    <StyledParagraph>Game Over</StyledParagraph>
+    <StyledParagraph>{gameWon ? 'Congratulations!' : 'Game Over. You lost!'}</StyledParagraph>
     <RestartButton onClick={() => handleRestart()}>New Word</RestartButton>
   </Wrapper>
 );
 
-export default GameLostView;
+export default GameOverView;

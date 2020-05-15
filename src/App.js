@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MainTemplate from './template/MainTemplate';
 import GameView from './views/GameView';
-import GameLostView from './views/GameLostView';
+import GameOverView from './views/GameOverView';
 import { randomWord } from './components/organisms/Words/Words';
 import { fetchData } from './components/organisms/Words/api';
 
@@ -37,11 +37,22 @@ const App = () => {
 
   const gameLost = lettersMissed.length >= 11;
 
+  const unique = (wordArr) => [...new Set(wordArr)];
+  const gameWon = unique(wordToGuess).every((e) => letterGuessed.includes(e));
+
+  const gameOver = gameWon || gameLost;
+
   return (
     <>
-      {gameLost && <GameLostView handleRestart={handleRestart} />}
+      {(gameLost || gameWon) && <GameOverView handleRestart={handleRestart} gameWon={gameWon} />}
       <MainTemplate>
-        <div style={{ outline: 'none' }} onKeyDown={keyPressed} tabIndex="0" ref={onFocus}>
+        <div
+          style={{ outline: 'none' }}
+          onKeyDown={!gameOver && keyPressed}
+          tabIndex="0"
+          role="textbox"
+          ref={onFocus}
+        >
           <GameView
             letterGuessed={letterGuessed}
             lettersMissed={lettersMissed}

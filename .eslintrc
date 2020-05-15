@@ -9,6 +9,7 @@
     "document": true,
     "fetch": false
   },
+
   "rules": {
     "react/state-in-constructor": [0, "always"],
     "import/prefer-default-export": 0,
