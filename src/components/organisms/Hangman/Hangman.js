@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Bar from '../../atoms/Bar/Bar';
 import Head from '../../atoms/Head/Head';
@@ -38,6 +39,10 @@ const Hangman = ({ wrongAnswer }) => {
       <StyledHangman>{wrongAnswer.map((body) => hangman[body])}</StyledHangman>
     </>
   );
+};
+
+Hangman.propTypes = {
+  wrongAnswer: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Hangman;

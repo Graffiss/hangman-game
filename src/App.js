@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import MainTemplate from './template/MainTemplate';
 import GameView from './views/GameView';
 import GameOverView from './views/GameOverView';
+import AppContext from './context';
 import { randomWord } from './components/organisms/Words/Words';
 import { fetchData } from './components/organisms/Words/api';
 
@@ -42,8 +43,15 @@ const App = () => {
 
   const gameOver = gameWon || gameLost;
 
+  const context = {
+    wrongAnswer,
+    lettersMissed,
+    letterGuessed,
+    wordToGuess,
+  };
+
   return (
-    <>
+    <AppContext.Provider value={context}>
       {(gameLost || gameWon) && <GameOverView handleRestart={handleRestart} gameWon={gameWon} />}
       <MainTemplate>
         <div
@@ -61,7 +69,7 @@ const App = () => {
           />
         </div>
       </MainTemplate>
-    </>
+    </AppContext.Provider>
   );
 };
 

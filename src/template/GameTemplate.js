@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import Hangman from '../components/organisms/Hangman/Hangman';
+import AppContext from '../context';
 
 const Wrapper = styled.div`
   margin: 50px 0;
@@ -61,7 +62,11 @@ const StyledLettersGuessed = styled.button`
     `}
 `;
 
-const GameTemplate = ({ wrongAnswer, lettersMissed, letterGuessed, wordToGuess }) => {
+const GameTemplate = () => {
+  const { wrongAnswer, wordToGuess, letterGuessed, lettersMissed } = useContext(AppContext);
+  const emptyLetter = <StyledLettersGuessed empty />;
+  const wordToGuessArr = wordToGuess.split(' ').join(emptyLetter);
+
   return (
     <Wrapper>
       <StyledResult>

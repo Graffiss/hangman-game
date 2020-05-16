@@ -23,17 +23,16 @@ const StyledTriangle = styled.div`
   right: 0px;
 `;
 
-const GameView = ({ children, letterGuessed, lettersMissed, wrongAnswer, wordToGuess }) => (
+const GameView = ({ children }) => (
   <Wrapper>
     {children}
     <StyledTriangle />
-    <GameTemplate
-      letterGuessed={letterGuessed}
-      lettersMissed={lettersMissed}
-      wrongAnswer={wrongAnswer}
-      wordToGuess={wordToGuess}
-    />
+    <GameTemplate />
   </Wrapper>
 );
+
+GameView.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default GameView;

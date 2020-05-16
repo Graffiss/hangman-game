@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -38,5 +39,10 @@ const GameOverView = ({ handleRestart, gameWon }) => (
     <RestartButton onClick={() => handleRestart()}>New Word</RestartButton>
   </Wrapper>
 );
+
+GameOverView.propTypes = {
+  handleRestart: PropTypes.func.isRequired,
+  gameWon: PropTypes.bool.isRequired,
+};
 
 export default GameOverView;
