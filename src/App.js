@@ -36,10 +36,10 @@ const App = () => {
     setWrongAnswer([]);
   };
 
-  const gameLost = lettersMissed.length >= 11;
+  const gameLost = lettersMissed.length >= 2;
 
   const unique = (wordArr) => [...new Set(wordArr)];
-  const gameWon = unique(wordToGuess).every((e) => letterGuessed.includes(e));
+  const gameWon = unique(wordToGuess.split(' ').join('')).every((e) => letterGuessed.includes(e));
 
   const gameOver = gameWon || gameLost;
 

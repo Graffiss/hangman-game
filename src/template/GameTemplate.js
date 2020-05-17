@@ -79,15 +79,25 @@ const GameTemplate = () => {
         </StyledResultMissed>
       </StyledResult>
       <StyledAnswer>
-        {[...wordToGuess].map((letter) =>
-          letterGuessed.includes(letter) ? (
+        {
+          [...wordToGuess].map((letter) =>
+            letter === ' ' ? (
+              <StyledLettersGuessed empty />
+            ) : letterGuessed.includes(letter) ? (
+              <StyledLettersGuessed>{letter}</StyledLettersGuessed>
+            ) : (
+              <StyledLettersGuessed />
+            ),
+          )
+          /* letterGuessed.includes(letter) ? (
             <StyledLettersGuessed key={Math.random() * letter.length}>
               {letter}
             </StyledLettersGuessed>
           ) : (
             <StyledLettersGuessed key={Math.random() * letter.length} />
           ),
-        )}
+          ) */
+        }
       </StyledAnswer>
     </Wrapper>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -33,12 +33,32 @@ const StyledParagraph = styled.p`
   color: white;
 `;
 
-const GameOverView = ({ handleRestart, gameWon }) => (
-  <Wrapper>
-    <StyledParagraph>{gameWon ? 'Congratulations!' : 'Game Over. You lost!'}</StyledParagraph>
-    <RestartButton onClick={() => handleRestart()}>New Word</RestartButton>
-  </Wrapper>
-);
+const GameOverView = ({ handleRestart, gameWon }) => {
+  const onFocus = useRef(null);
+
+  useEffect(() => {
+    onFocus.current.focus();
+  });
+
+  const enterPressed = (e) => {
+    e.key === 'Enter' && handleRestart();
+  };
+
+  return (
+    <Wrapper>
+      <StyledParagraph>{gameWon ? 'Congratulations!' : 'Game Over. You lost!'}</StyledParagraph>
+      <RestartButton
+        onClick={() => handleRestart()}
+        onKeyDown={enterPressed}
+        tabIndex="0"
+        role="button"
+        ref={onFocus}
+      >
+        New Word
+      </RestartButton>
+    </Wrapper>
+  );
+};
 
 GameOverView.propTypes = {
   handleRestart: PropTypes.func.isRequired,
