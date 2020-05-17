@@ -42,7 +42,7 @@ const Hangman = ({ wrongAnswer }) => {
 };
 
 Hangman.propTypes = {
-  wrongAnswer: PropTypes.arrayOf(PropTypes.string).isRequired,
+  wrongAnswer: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Hangman;

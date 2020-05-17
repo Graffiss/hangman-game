@@ -3,7 +3,6 @@ import MainTemplate from './template/MainTemplate';
 import GameView from './views/GameView';
 import GameOverView from './views/GameOverView';
 import AppContext from './context';
-import { randomWord } from './components/organisms/Words/Words';
 import { fetchData } from './components/organisms/Words/api';
 
 const App = () => {
@@ -11,7 +10,11 @@ const App = () => {
   const [letterGuessed, setLetterGuessed] = useState([]);
   const [lettersMissed, setLetterMissed] = useState([]);
   const [wrongAnswer, setWrongAnswer] = useState([]);
-  const [wordToGuess, setWordToGuess] = useState(randomWord());
+  const [wordToGuess, setWordToGuess] = useState('');
+
+  useEffect(() => {
+    fetchData(setWordToGuess);
+  }, []);
 
   const keyPressed = (e) => {
     e.preventDefault();
@@ -30,13 +33,13 @@ const App = () => {
   }, [lettersMissed]);
 
   const handleRestart = () => {
-    setWordToGuess(randomWord());
+    fetchData(setWordToGuess);
     setLetterGuessed([]);
     setLetterMissed([]);
     setWrongAnswer([]);
   };
 
-  const gameLost = lettersMissed.length >= 2;
+  const gameLost = lettersMissed.length >= 11;
 
   const unique = (wordArr) => [...new Set(wordArr)];
   const gameWon = unique(wordToGuess.split(' ').join('')).every((e) => letterGuessed.includes(e));

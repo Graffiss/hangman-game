@@ -32,6 +32,11 @@ const StyledParagraph = styled.p`
   color: #53555d;
   font-size: 24px;
   text-transform: uppercase;
+  ${({ centered }) =>
+    centered &&
+    css`
+      text-align: center;
+    `}
 `;
 
 const StyledMissedLetters = styled.p`
@@ -64,8 +69,6 @@ const StyledLettersGuessed = styled.button`
 
 const GameTemplate = () => {
   const { wrongAnswer, wordToGuess, letterGuessed, lettersMissed } = useContext(AppContext);
-  const emptyLetter = <StyledLettersGuessed empty />;
-  const wordToGuessArr = wordToGuess.split(' ').join(emptyLetter);
 
   return (
     <Wrapper>
@@ -78,26 +81,17 @@ const GameTemplate = () => {
           ))}
         </StyledResultMissed>
       </StyledResult>
+      <StyledParagraph centered>Country in Europe:</StyledParagraph>
       <StyledAnswer>
-        {
-          [...wordToGuess].map((letter) =>
-            letter === ' ' ? (
-              <StyledLettersGuessed empty />
-            ) : letterGuessed.includes(letter) ? (
-              <StyledLettersGuessed>{letter}</StyledLettersGuessed>
-            ) : (
-              <StyledLettersGuessed />
-            ),
-          )
-          /* letterGuessed.includes(letter) ? (
-            <StyledLettersGuessed key={Math.random() * letter.length}>
-              {letter}
-            </StyledLettersGuessed>
+        {[...wordToGuess].map((letter, index) =>
+          letter === ' ' ? (
+            <StyledLettersGuessed empty key={index} />
+          ) : letterGuessed.includes(letter) ? (
+            <StyledLettersGuessed key={index}>{letter}</StyledLettersGuessed>
           ) : (
-            <StyledLettersGuessed key={Math.random() * letter.length} />
+            <StyledLettersGuessed key={index} />
           ),
-          ) */
-        }
+        )}
       </StyledAnswer>
     </Wrapper>
   );

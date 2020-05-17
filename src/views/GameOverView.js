@@ -41,7 +41,9 @@ const GameOverView = ({ handleRestart, gameWon }) => {
   });
 
   const enterPressed = (e) => {
-    e.key === 'Enter' && handleRestart();
+    if (e.key === 'Enter') {
+      handleRestart();
+    }
   };
 
   return (

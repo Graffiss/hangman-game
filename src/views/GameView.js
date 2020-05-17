@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import GameTemplate from '../template/GameTemplate';
 
@@ -23,16 +22,11 @@ const StyledTriangle = styled.div`
   right: 0px;
 `;
 
-const GameView = ({ children }) => (
+const GameView = () => (
   <Wrapper>
-    {children}
     <StyledTriangle />
     <GameTemplate />
   </Wrapper>
 );
-
-GameView.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default GameView;
