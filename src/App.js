@@ -42,7 +42,9 @@ const App = () => {
   const gameLost = lettersMissed.length >= 11;
 
   const unique = (wordArr) => [...new Set(wordArr)];
-  const gameWon = unique(wordToGuess.split(' ').join('')).every((e) => letterGuessed.includes(e));
+  const gameWon =
+    wordToGuess.length > 1 &&
+    unique(wordToGuess.split(' ').join('')).every((e) => letterGuessed.includes(e));
 
   const gameOver = gameWon || gameLost;
 
