@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// require('dotenv').config();
+
 const api = 'https://wordsapiv1.p.rapidapi.com/words/europe/hasMembers';
 const apiParams = {
   headers: {
